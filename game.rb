@@ -21,19 +21,33 @@ class Node
 end
 
 class Game
+  attr_accessor :arena
   def initialize
     @arena = DirectedMultiGraph.new
   end
 
   def addNode(v)
-
+    @arena.add_vertex(v)
   end
+
+  def addEdge(v,w)
+    @arena.add_edge(v,w)
+  end
+
+  def exportToPng
+    @arena.write_to_graphic_file
+  end
+
 end
 
 a = Node.new(:a, 0)
 b = Node.new(:b, 0)
 c = Node.new(:c, 1)
 
-dg = DirectedMultiGraph[a,b, a,c, c,c]
+g = Game.new
 
-dg.write_to_graphic_file
+g.addNode(a)
+g.addNode(b)
+g.addNode(c)
+
+puts g.arena.vertices.to_s + "bla"
