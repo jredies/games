@@ -8,11 +8,6 @@ require 'plexus/dot'
 
 include Plexus
 
-def printSet (s)
-  s.each { |x| print x.to_s + " " }
-  puts ""
-end
-
 class Array
 	def exists?
 		not self.all? { |x| not yield(x) }
